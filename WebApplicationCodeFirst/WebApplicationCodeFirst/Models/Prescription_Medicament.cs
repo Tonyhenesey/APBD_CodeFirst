@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 [Table("Prescription_Medicament")]
 public class Prescription_Medicament
 {
+    private Prescription _prescription;
+
     [Key, Column(Order = 0)]
     public int IdMedicament { get; set; }
 
@@ -20,5 +22,9 @@ public class Prescription_Medicament
     public Medicament Medicament { get; set; }
 
     [ForeignKey("IdPrescription")]
-    public Prescription Prescription { get; set; }
+    public Prescription Prescription
+    {
+        get => _prescription;
+        set => _prescription = value;
+    }
 }

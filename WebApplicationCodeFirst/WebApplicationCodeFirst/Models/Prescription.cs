@@ -9,6 +9,11 @@ using WebApplicationCodeFirst.Models;
 [Table("prescription")]
 public class Prescription
 {
+    public Prescription()
+    {
+        Prescription_Medicaments = new List<Prescription_Medicament>();
+    }
+
     [Key]
     public int IdPrescription { get; set; }
 
