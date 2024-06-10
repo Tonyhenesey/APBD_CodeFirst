@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationCodeFirst.ModelsDTO;
 using WebApplicationCodeFirst.Repository;
+using WebApplicationCodeFirst.Services;
 
 namespace WebApplicationCodeFirst.Controlers;
 
@@ -9,19 +10,19 @@ namespace WebApplicationCodeFirst.Controlers;
 [Route("api/[controller]")]
 public class PrescriptionsController : ControllerBase
 {
-    private readonly IPrescriptionRepository _prescriptionRepository;
+    private readonly IPrescriptionService _prescriptionService;
 
-    public PrescriptionsController(IPrescriptionRepository prescriptionRepository)
+    public PrescriptionsController(IPrescriptionService prescriptionService)
     {
-        _prescriptionRepository = prescriptionRepository;
+        _prescriptionService = prescriptionService;
     }
 
-    [HttpPost]
+    [HttpPost("CreatePrescription")]
     public async Task<IActionResult> CreatePrescription(PrescriptionRequest request)
     {
         try
         {
-            var prescription = await _prescriptionRepository.CreatePrescriptionAsync(request);
+            var prescription = await _prescriptionService.CreatePrescriptionAsync(request);
             return Ok(prescription);
         }
         catch (ArgumentException ex)

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplicationCodeFirst.DBContext;
 using WebApplicationCodeFirst.Repository;
+using WebApplicationCodeFirst.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +11,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
 builder.Services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
+builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
 
 var app = builder.Build();
 

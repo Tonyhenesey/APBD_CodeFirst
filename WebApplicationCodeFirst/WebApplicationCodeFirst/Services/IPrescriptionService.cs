@@ -1,9 +1,8 @@
 using WebApplicationCodeFirst.ModelsDTO;
 
-namespace WebApplicationCodeFirst.Repository;
+namespace WebApplicationCodeFirst.Services;
 
-
-public interface IPrescriptionRepository
+public interface IPrescriptionService
 {
     Task<Prescription> CreatePrescriptionAsync(PrescriptionRequest request);
 }
