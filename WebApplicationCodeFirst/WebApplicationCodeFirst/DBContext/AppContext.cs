@@ -28,8 +28,7 @@ public class ApplicationDbContext : DbContext
 
             modelBuilder.Entity<Prescription_Medicament>()
                 .HasKey(pm => new { pm.IdMedicament, pm.IdPrescription });
-
-            // Seed initial data
+            
             modelBuilder.Entity<Doctor>().HasData(new List<Doctor>()
             {
                 new() { IdDoctor = 1, FirstName = "John", LastName = "Doe", Email = "john.doe@example.com" },
